@@ -34,15 +34,15 @@ const Image = (props: any) => (
     `}
     render={data => {
       const image = data.images.edges.find((n: any) => {
-        return n.node.relativePath.includes(props.filename);
-      });
+        return n.node.relativePath.includes(props.filename)
+      })
       if (!image) {
-        return null;
+        return null
       }
 
-      return <Img alt={props.alt} fluid={image.node.childImageSharp.fluid} />;
+      return <Img alt={props.alt} fluid={image.node.childImageSharp.fluid} />
     }}
   />
-);
+)
 
-export default Image;
+export default Image
