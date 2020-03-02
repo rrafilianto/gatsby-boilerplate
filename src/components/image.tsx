@@ -13,7 +13,7 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image = props => (
+const Image = (props: any) => (
   <StaticQuery
     query={graphql`
       query {
@@ -33,7 +33,7 @@ const Image = props => (
       }
     `}
     render={data => {
-      const image = data.images.edges.find(n => {
+      const image = data.images.edges.find((n: any) => {
         return n.node.relativePath.includes(props.filename);
       });
       if (!image) {
