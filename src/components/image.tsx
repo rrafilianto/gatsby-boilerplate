@@ -13,7 +13,32 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image = (props: any) => (
+type Image = {
+  alt: string
+  filename: string
+}
+
+type EdgesImage = {
+  node: {
+    childImageSharp: {
+      fluid: Fluid
+      id: string
+    }
+    id: string
+    name: string
+    relativePath: string
+  }
+}
+
+type Fluid = {
+  aspectRatio: number
+  base64: string
+  sizes: string
+  src: string
+  srcSet: string
+}
+
+const Image = (props: Image) => (
   <StaticQuery
     query={graphql`
       query {
@@ -33,8 +58,8 @@ const Image = (props: any) => (
       }
     `}
     render={data => {
-      const image = data.images.edges.find((n: any) => {
-        return n.node.relativePath.includes(props.filename)
+      const image = data.images.edges.find((edge: EdgesImage) => {
+        return edge.node.relativePath.includes(props.filename)
       })
       if (!image) {
         return null
