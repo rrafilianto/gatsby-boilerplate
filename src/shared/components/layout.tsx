@@ -6,30 +6,18 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.scss"
+import { useLayoutQuery } from "../services/layout.hook"
+import { LayoutProps } from "../interfaces/layout-component.interface"
+import "../../assets/styles/layout.scss"
 
-type Layout = {
-  children: React.ReactNode
-}
-
-const Layout: React.FunctionComponent<Layout> = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
+  const { site } = useLayoutQuery()
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={site.siteMetadata.title} />
       <div
         style={{
           margin: `0 auto`,
@@ -46,10 +34,6 @@ const Layout: React.FunctionComponent<Layout> = ({ children }) => {
       </div>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
