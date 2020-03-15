@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
   siteMetadata: {
+    siteUrl: `https://www.your-site-here.com`,
     title: `Gatsby Boilerplate`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@rrafilianto`,
@@ -35,6 +36,13 @@ module.exports = {
       options: {
         trackingId: `YOUR_GOOGLE_ANALYTICS_TRACKING_ID`,
         head: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: [`/404`],
+        sitemapSize: 5000,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
