@@ -19,11 +19,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `gatsby-boilerplate`,
+        short_name: `Gatsby`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
